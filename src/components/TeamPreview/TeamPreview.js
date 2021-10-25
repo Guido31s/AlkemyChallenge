@@ -1,0 +1,92 @@
+import React from "react"
+import { useSelector } from "react-redux"
+import TeamCard from "../TeamCard/TeamCard"
+const TeamPreview = () => {
+    let team = useSelector((state) => state.team);
+  
+    const totalStat = (stat) =>
+      team
+        .map((hero) =>
+          hero.powerstats[stat] === "null" ? 0 : +hero.powerstats[stat]
+        )
+        .reduce((a, b) => a + b);
+  
+    let averageWeight =
+      team?.length > 0
+        ? team
+            .map((hero) => +hero.appearance.weight[1].split(" ")[0])
+            .reduce((a, b) => a + b, 0) / team.length
+        : 0;
+    let averageHeight =
+      team?.length > 0
+        ? team
+            .map((hero) => +hero.appearance.height[1].split(" ")[0])
+            .reduce((a, b) => a + b, 0) / team.length
+        : 0;
+    let badHeros = team.filter(
+      (hero) => hero.biography.alignment === "bad"
+    ).length;
+    let goodHeros = team.filter(
+      (hero) => hero.biography.alignment === "good"
+    ).length;
+  
+    let teamStats =
+      team.length > 0
+        ? [
+            { Intelligence: totalStat("intelligence") },
+            { Strength: totalStat("strength") },
+            { Speed: totalStat("speed") },
+            { Durability: totalStat("durability") },
+            { Power: totalStat("power") },
+            { Combat: totalStat("combat") },
+          ]
+        : null;
+  
+    return (
+      <>
+        {team.length ? (
+          <div>
+        
+            <div>
+              <div>
+              <h1>Team</h1>
+                <div>
+                  <h5>Bad heroes: {badHeros}</h5>
+                  <h5>Good heroes: {goodHeros}</h5>
+                </div>
+                <div>
+                  <h5>Avg weight: {Math.ceil(averageWeight)} kg</h5>
+                  <h5>Avg height: {Math.ceil(averageHeight)} cm</h5>
+                </div>
+                <div>
+                  <h1>Powerstats</h1>
+                  {
+                    
+                    teamStats
+                      .sort((a, b) => Object.values(b) - Object.values(a))
+                      .map((stat) => (
+                        <p>
+                          {Object.keys(stat)}: {Object.values(stat)}
+                        </p>
+                      ))
+                  }
+                </div>
+              </div>
+              <div>
+                {team.map((hero) => (
+                  <TeamCard data={hero} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h5>Your team is empty</h5>
+          </div>
+        )}
+      </>
+    );
+  };
+  
+  export default TeamPreview;
+  
