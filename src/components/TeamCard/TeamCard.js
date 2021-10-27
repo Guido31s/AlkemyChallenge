@@ -19,7 +19,7 @@ const TeamCard = ({ data }) => {
     ).length;
   
     return (
-      <Card>
+      <Card style={{ width: "20rem" }} className="col-12 col-md-6 col-lg-4 col-xl-4 m-auto rounded-0 bg-light text-black">
         <Link to={`/detail/${data.id}`}>
           <Card.Img variant="top" src={data.image.url} alt="Not image available"/>
         </Link>
@@ -27,19 +27,19 @@ const TeamCard = ({ data }) => {
           <Card.Title>{data.name}</Card.Title>
 
           <Link to={`/detail/${data.id}`}>
-            <button variant="primary">Details</button>
+            <button className="btn btn-info text-white rounded-0 m-3">Details</button>
           </Link>
   
           {team?.length > 0 && teamIds.includes(data.id) ? (
             <button
-              variant="primary"
+            className="btn btn-danger rounded-0"
               onClick={() => dispatch(removeHero(data.id))}
             >
               Remove
             </button>
-          ) : ((data.biography.alignment === "bad") & (badHeros < 3)) |
-            ((data.biography.alignment === "good") & (goodHeros < 3)) ? (
-            <button variant="primary" onClick={() => dispatch(addHero(data))}>
+          ) : ((data.biography.alignment === "bad") && (badHeros < 3)) |
+            ((data.biography.alignment === "good") && (goodHeros < 3)) ? (
+            <button className="btn btn-outline-secondary m-auto" onClick={() => dispatch(addHero(data))}>
               Add to team
             </button>
           ) : (

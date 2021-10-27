@@ -44,44 +44,38 @@ const TeamPreview = () => {
   
     return (
       <>
-        {team.length ? (
-          <div>
-        
-            <div>
-              <div>
-              <h1>Team</h1>
-                <div>
-                  <h5>Bad heroes: {badHeros}</h5>
-                  <h5>Good heroes: {goodHeros}</h5>
-                </div>
-                <div>
-                  <h5>Avg weight: {Math.ceil(averageWeight)} kg</h5>
-                  <h5>Avg height: {Math.ceil(averageHeight)} cm</h5>
-                </div>
-                <div>
-                  <h1>Powerstats</h1>
-                  {
-                    
-                    teamStats
-                      .sort((a, b) => Object.values(b) - Object.values(a))
-                      .map((stat) => (
-                        <p>
-                          {Object.keys(stat)}: {Object.values(stat)}
-                        </p>
-                      ))
-                  }
-                </div>
+         {team.length ? (
+            <div className="m-auto mb-5 text-white">
+              <div className="container justify-content-center">
+                  <div className="row">
+                    <div className="col-12 col-md-6">
+                      <h1><code>Team</code></h1>
+                      <h5>Bad heroes: <p className="text-danger">{badHeros}</p></h5>
+                      <h5>Good heroes: <p className="text-info">{goodHeros}</p></h5>
+                      <h5>Avg weight: <p className="text-success">{Math.ceil(averageWeight)} kg</p></h5>
+                      <h5>Avg height: <p className="text-success"> {Math.ceil(averageHeight)} cm</p></h5>
+                    </div>
+                        <div className="col-12 col-md-6">
+                               <h1><code>Powerstats</code></h1>
+                                {
+                                  teamStats.sort((a, b) => Object.values(b) - Object.values(a))
+                                    .map((stat) => (
+                                          <p className="text-warning">{Object.keys(stat)}: {Object.values(stat)} </p>
+                                          ))}
+                        </div>
+                  </div>
               </div>
-              <div>
-                {team.map((hero) => (
-                  <TeamCard data={hero} />
-                ))}
+              <div className="container">
+                <div className="row">
+                  {team.map((hero) => (
+                    <TeamCard data={hero} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
         ) : (
           <div>
-            <h5>Your team is empty</h5>
+            <h5 className="text-white mb-5 mt-5">Your team is empty</h5>
           </div>
         )}
       </>

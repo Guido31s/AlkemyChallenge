@@ -6,11 +6,12 @@ import Home from "./components/Home/Home"
 import { Team } from "./components/Team/Team";
 import { Detail } from "./components/Detail/Detail";
 import { NotFound } from "./components/NotFound/NotFound";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
 
-    <div className="App">
+    <div className="App bg-dark">
       <Route component={NavBar} />
       <Switch>
         <Route exact path="/" component={Home} />

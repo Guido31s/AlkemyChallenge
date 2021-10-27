@@ -13,31 +13,36 @@ const HeroCard = ({ data }) => {
   
   
     return (
-      <Card style={{ width: "20rem" }}>
-        <Link to={`/detail/${data.data.id}`}> 
-        <Card.Img variant="top" src={data.data.image.url} alt="Not image available"/>
+      <Card style={{ width: "20rem" }} className="m-auto rounded-0 bg-light">
+        <div>
+        <Link to={`/detail/${data.data.id}`} > 
+        <Card.Img  src={data.data.image.url} className="w-100" alt="Not image available"/>
         </Link>
+        </div>
+       
         <Card.Body>
           <Card.Title>{data.data.name}</Card.Title>
           <Card.Text>
             <div>
-              <p>intelligence: {data.data.powerstats.intelligence}</p>
-              <p>strength: {data.data.powerstats.strength}</p>
-              <p>speed: {data.data.powerstats.speed}</p>
-              <p>durability: {data.data.powerstats.durability}</p>
-              <p>power: {data.data.powerstats.power}</p>
-              <p>combat: {data.data.powerstats.combat}</p>
-              <p>aligment: {data.data.biography.alignment}</p>
+              <p>Power: {data.data.powerstats.power}</p>
+              <p>Strength: {data.data.powerstats.strength}</p>
+              <p>Speed: {data.data.powerstats.speed}</p>
+              <p>Combat: {data.data.powerstats.combat}</p>
+              <p>Intelligence: {data.data.powerstats.intelligence}</p>
+              <p>Durability: {data.data.powerstats.durability}</p>
+              <p>Aligment: {data.data.biography.alignment}</p>
             </div>
           </Card.Text>
           <Link to={`/detail/${data.data.id}`}>
-          <button variant="primary">
+          <button
+          className="btn btn-info text-white rounded-0 m-1">
             View Details
           </button>
           </Link>
   
           {team?.length>0 && teamIds.includes(data.data.id) ? (
             <button
+            className="btn btn-danger rounded-0"
               variant="primary"
               onClick={() => dispatch(removeHero(data.data.id))}
             >
@@ -45,12 +50,13 @@ const HeroCard = ({ data }) => {
             </button>
           ) : (data.data.biography.alignment === "bad" && badHeros < 3) || (data.data.biography.alignment === "good" && goodHeros < 3) ?(
             <button
-              variant="primary"
+            className="btn btn-success rounded-0"
+            
               onClick={() => dispatch(addHero(data.data))}
             >
               Add to team
             </button>
-          ): <p>you have enought {data.data.biography.alignment} heroes</p>}
+          ): <p>You have enought {data.data.biography.alignment} heroes.</p>}
         </Card.Body>
       </Card>
     );
