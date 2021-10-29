@@ -1,6 +1,6 @@
 import React from "react"
-import { useHistory, Link } from "react-router-dom"
-import "./NavBar.css"
+import { useHistory} from "react-router-dom"
+import "./navbar.css"
 export const NavBar = () => {
 const redirect = useHistory()
 const logOut= () => {
@@ -8,13 +8,9 @@ const logOut= () => {
     redirect.push("/login")
 }
     return (
-        <div className="bg-white navBody">
-            <Link to="/" className="navBody">
-                <div className="mt-5">
-                    <h1 className="text-black">Heros App</h1>
-                </div>
-            </Link>
-            {window.localStorage.getItem("alkemyToken")?<button onClick={() => logOut()}>Log Out</button>: null}
-        </div>
+        <header className="headerStyle text-end">
+                    <p className="text-black text-center">Super Hero App</p>
+            {window.localStorage.getItem("alkemyToken")?<button className="btn btn-secondary btnNav rounded-0" onClick={() => logOut()}>Log Out</button>: null}
+        </header>
     )
 }

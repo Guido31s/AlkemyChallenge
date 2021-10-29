@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   let heros = useSelector((state) => state.search);
   const [search, setSearch] = useState("");
-  const [amount, setAmount] = useState(12);
+  const [amount, setAmount] = useState(4);
   const [isOpen, setOpen] = useState(false);
   const [actualSearch, setActualSearch] = useState("");
 
@@ -45,42 +45,40 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-dark">
-      <TeamPreview />
-      <div >
+    <div className="bg-dark text-center">
+      
+      <div>
         {actualSearch.length ? (
           <div
             onClick={() => deleteSearch()}
             style={{ cursor: "pointer" }}
-            className="text-white"
-          >
+            className="text-white">
             <button className="btn btn-outline-warning rounded-0 text-white bg-black"> Delete Search:  {actualSearch} </button>
-
           </div>
         ) : (
-          <form  onSubmit={(e) => handleSubmit(e)}>
+          <form className="mt-2 mb-2"  onSubmit={(e) => handleSubmit(e)}>
             <input
               type="text"
               placeholder="Search Hero"
               value={search}
               onChange={(e)=>onSearchChange(e)}
               className="btn border-dark rounded-0 bg-white"
-              style={{cursor: "text"}}
-            />
+              style={{cursor: "text"}} />
             <button className="btn btn-secondary rounded-0" type="submit">Search</button>
           </form>
         )}
+        <TeamPreview />
         <div>
           <div  onClick={() => setOpen(!isOpen)}>
-            <h3 className="text-white m-3"><code>Amount: {amount}</code></h3>
+            <h3 className="text-white m-3 text-center"><code>Amount Heroes: {amount}</code></h3>
             <div>
             </div>
           </div>
-          <div className="text-white">
+          <div className="text-white text-center">
             <p>Select amount of Heroes</p>
-            <p onClick={() => {setAmount(15); setOpen(false)}} className="btn btn-primary rounded-0">15</p>
-            <p onClick={() => {setAmount(24); setOpen(false)}} className="btn btn-success rounded-0">24</p>
-            <p onClick={() => {setAmount(48); setOpen(false)}} className="btn btn-danger rounded-0">48</p>
+            <p onClick={() => {setAmount(8); setOpen(false)}} className="btn btn-primary rounded-0">8</p>
+            <p onClick={() => {setAmount(12); setOpen(false)}} className="btn btn-success rounded-0">12</p>
+            <p onClick={() => {setAmount(16); setOpen(false)}} className="btn btn-danger rounded-0">16</p>
           </div>
         </div>
       </div>

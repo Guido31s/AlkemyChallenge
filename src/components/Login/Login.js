@@ -2,17 +2,18 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
+import "./login.css"
 
 
 const Login = () => {
     const redirect = useHistory();
+
     return (
-      <div >
-        <div >
-          <h1>Log in</h1>
+        <div className="loginSection">
+<p className="text-left">Log In</p>
           {!window.localStorage.getItem("alkemyToken") ? (
             <Formik
+            className="formikLogin"
               initialValues={{ email: "", password: "" }}
               validate={(values) => {
                 const errors = {};
@@ -39,36 +40,38 @@ const Login = () => {
                     );
                   })
                   .then(() => redirect.push("/"))
-              }}
-            >
+              }} >
               {({ isSubmitting }) => (
-                <Form >
-                  <h3>Email:</h3>
-                  <Field  type="email" name="email" />
+                <Form className="text-center">
+                  <div className="form-group mb-4">
+                  <label className="form-label" for="name">Email:</label>
+                  <Field className="form-control rounded-0" type="email" name="email" />
+                  </div>
                   <ErrorMessage name="email" component="div" />
-                  <h3>Password:</h3>
+                  <div className="form-group mb-4">
+                  <label className="form-label" for="password">Password:</label>
                   <Field
-                    
+                    className="form-control rounded-0"
                     type="password"
-                    name="password"
-                  />
+                    name="password" />
+                  </div>
                   <ErrorMessage name="password" component="div" />
-                  <button type="submit" disabled={isSubmitting}>
+                  <button className="btn btn-dark rounded-0 mt-3 mb-3" type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
                 </Form>
               )}
             </Formik>
           ) : (
-            <div>
-              <h5>you are already singed in</h5>
+            <div className="text-center">
+              <h5>You're already singed in</h5>
               <Link to="/">
-                <button variant="primary">Return home</button>
+                <button className="btn btn-secondary rounded-0 m-2">Return home</button>
               </Link>
             </div>
           )}
         </div>
-      </div>
+
     );
   };
   

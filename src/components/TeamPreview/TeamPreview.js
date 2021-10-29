@@ -1,6 +1,8 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import TeamCard from "../TeamCard/TeamCard"
+import "./teamPreview.css"
+
 const TeamPreview = () => {
     let team = useSelector((state) => state.team);
   
@@ -45,18 +47,18 @@ const TeamPreview = () => {
     return (
       <>
          {team.length ? (
-            <div className="m-auto mb-5 text-white">
+            <div className="m-auto mb-5 text-white text-center">
               <div className="container justify-content-center">
                   <div className="row">
-                    <div className="col-12 col-md-6">
-                      <h1><code>Team</code></h1>
+                    <div className="col-12 col-md-6 border">
+                      <h1><code className="codeLetter">Team</code></h1>
                       <h5>Bad heroes: <p className="text-danger">{badHeros}</p></h5>
                       <h5>Good heroes: <p className="text-info">{goodHeros}</p></h5>
                       <h5>Avg weight: <p className="text-success">{Math.ceil(averageWeight)} kg</p></h5>
                       <h5>Avg height: <p className="text-success"> {Math.ceil(averageHeight)} cm</p></h5>
                     </div>
-                        <div className="col-12 col-md-6">
-                               <h1><code>Powerstats</code></h1>
+                        <div className="col-12 col-md-6 border">
+                               <h1><code className="codeLetter">Powerstats</code></h1>
                                 {
                                   teamStats.sort((a, b) => Object.values(b) - Object.values(a))
                                     .map((stat) => (
@@ -75,7 +77,7 @@ const TeamPreview = () => {
             </div>
         ) : (
           <div>
-            <h5 className="text-white mb-5 mt-5">Your team is empty</h5>
+            <h5 className="text-white mb-5 mt-5 text-center">Your team is empty</h5>
           </div>
         )}
       </>

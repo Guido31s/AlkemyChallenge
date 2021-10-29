@@ -1,0 +1,9 @@
+.detailSection {
+    min-height: 88.6vh;
+}
+
+.codeLetter {
+    font-size: 40px;
+    color: rgb(170, 135, 170);
+    text-shadow: 1px 1px 1px black
+}

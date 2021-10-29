@@ -19,13 +19,23 @@ const TeamCard = ({ data }) => {
     ).length;
   
     return (
-      <Card style={{ width: "20rem" }} className="col-12 col-md-6 col-lg-4 col-xl-4 m-auto rounded-0 bg-light text-black">
+      <Card style={{ width: "20rem" }} className="m-auto mt-5 shadow-lg rounded-0 bg-light text-black">
         <Link to={`/detail/${data.id}`}>
           <Card.Img variant="top" src={data.image.url} alt="Not image available"/>
         </Link>
         <Card.Body>
           <Card.Title>{data.name}</Card.Title>
-
+          <Card.Text>
+            <div>
+              <p>Power: {data.powerstats.power}</p>
+              <p>Strength: {data.powerstats.strength}</p>
+              <p>Speed: {data.powerstats.speed}</p>
+              <p>Combat: {data.powerstats.combat}</p>
+              <p>Intelligence: {data.powerstats.intelligence}</p>
+              <p>Durability: {data.powerstats.durability}</p>
+              <p>Aligment: {data.biography.alignment}</p>
+            </div>
+          </Card.Text>
           <Link to={`/detail/${data.id}`}>
             <button className="btn btn-info text-white rounded-0 m-3">Details</button>
           </Link>

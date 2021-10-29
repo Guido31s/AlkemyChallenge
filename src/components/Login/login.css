@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+.loginSection p {
+    font-size: 38px;
+    text-align: center;
+}
+
+.loginSection {
+    min-height: 89.4vh;
+    background: linear-gradient(180deg, rgba(92,71,230,1) 35%, rgba(96,53,190,1) 100%);
+    padding-top: 120px;
+}
+
+.loginSection p {
+    font-family: 'Chakra Petch', sans-serif;
+    text-shadow: 1px 1px 2px white;
+}
+
+
+.loginSection Form {
+    margin: auto ;
+    width: 348px;
+    padding: 60px 1px 60px 1px;
+    background-color: rgb(214, 214, 214);
+    box-shadow: 2px 5px 10px #333;
+}
+
+.loginSection label {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 24px;
+    text-decoration: underline;
+}

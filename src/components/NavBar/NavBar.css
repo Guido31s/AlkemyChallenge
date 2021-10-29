@@ -1,11 +1,16 @@
-
-.navBody {
-    min-height: 100px;
-    text-decoration: none;
-    margin: auto;
-    align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+.headerStyle p {
+    padding: 30px 0;
+    font-size: 38px;
+    font-family: 'Chakra Petch', sans-serif;
+    text-shadow: 1px 1px 2px white;
 }
 
-h1{
-    color: white;
+.headerStyle {
+    min-height: 75px;
+    background-color: rgb(92, 71, 230);
+}
+
+.btnNav {
+    margin-left: end;
 }
